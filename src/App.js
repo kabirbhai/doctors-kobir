@@ -1,8 +1,18 @@
+import { Routes, Route } from "react-router-dom";
+
+// pages
+import Home from "./pages/home/Home";
+import About from "./pages/about/About";
+import Navbar from "./pages/shared/Navbar";
+
 function App() {
   return (
     <div>
-      <h1 className="bg-slate-500">Welcome to doctors Kabir </h1>
-      <button class="btn btn-ghost">Button</button>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </div>
   );
 }
