@@ -7,13 +7,13 @@ const Info = () => {
   return (
     <section className="container mx-auto ">
       <div className="card-container grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="card bg-gradient-to-tr from-primary to-secondary shadow-xl">
+        <div class="card bg-gradient-to-tr from-primary to-secondary shadow-xl text-white">
           <div class="card-body flex-row justify-center items-center ">
+            <figure>
+              <img src={img1} alt="Movie" />
+            </figure>
             <div>
-              <img className="" src={img1} alt="" />
-            </div>
-            <div>
-              <h3>Opening Hours</h3>
+              <h3 className="text-2xl">Opening Hours</h3>
               <p className="mt-2">
                 If a dog chews shoes whose shoes does he choose?
               </p>
@@ -21,13 +21,13 @@ const Info = () => {
           </div>
         </div>
         {/* CARD 2  */}
-        <div class="card bg-accent shadow-xl">
+        <div class="card bg-accent shadow-xl text-white">
           <div class="card-body flex-row justify-center items-center ">
+            <figure>
+              <img src={img2} alt="Movie" />
+            </figure>
             <div>
-              <img className="" src={img2} alt="" />
-            </div>
-            <div>
-              <h3>Visit Out Location</h3>
+              <h3 className="text-2xl">Visit Out Location</h3>
               <p className="mt-2">
                 If a dog chews shoes whose shoes does he choose?
               </p>
@@ -35,13 +35,13 @@ const Info = () => {
           </div>
         </div>
         {/* CARD 3  */}
-        <div class="card bg-gradient-to-tr from-primary to-secondary shadow-xl">
+        <div class="card bg-gradient-to-tr from-primary to-secondary shadow-xl text-white">
           <div class="card-body flex-row justify-center items-center ">
+            <figure>
+              <img src={img3} alt="Movie" />
+            </figure>
             <div>
-              <img className="" src={img3} alt="" />
-            </div>
-            <div>
-              <h3>Contact us Now</h3>
+              <h3 className="text-2xl">Contact us Now</h3>
               <p className="mt-2">
                 If a dog chews shoes whose shoes does he choose?
               </p>
