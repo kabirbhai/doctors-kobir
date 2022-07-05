@@ -7,7 +7,7 @@ import img4 from "../../assets/images/treatment.png";
 
 const Services = () => {
   return (
-    <section className="container mx-auto py-20">
+    <section className="container mx-auto my-20">
       <h1 className="text-secondary text-center uppercase">Our services</h1>
       <h1 className="text-center text-3xl">Services we provide</h1>
       <div className="pt-12 grid gap-5 grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
