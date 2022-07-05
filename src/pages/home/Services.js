@@ -10,7 +10,7 @@ const Services = () => {
     <section className="container mx-auto py-20">
       <h1 className="text-secondary text-center uppercase">Our services</h1>
       <h1 className="text-center text-3xl">Services we provide</h1>
-      <div className="pt-12 grid gap-5 grid-cols-1 lg:grid-cols-3">
+      <div className="pt-12 grid gap-5 grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
         <Service title={"Fluoride Treatment"} img={img1} />
         <Service title={"Cavity Filling"} img={img2} />
         <Service title={"Teeth Whitening"} img={img3} />
@@ -20,7 +20,7 @@ const Services = () => {
       <div class="hero min-h-screen">
         <div class="hero-content flex-col lg:flex-row">
           <img src={img4} class="max-w-sm rounded-lg shadow-2xl" alt="" />
-          <div className="pl-44">
+          <div className="pl-0 md:pl-40 lg:pl-44">
             <h1 class="text-5xl font-bold">
               Exceptional Dental Care, on Your Terms
             </h1>
