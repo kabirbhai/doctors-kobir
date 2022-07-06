@@ -1,49 +1,63 @@
 import React from "react";
 import { format } from "date-fns";
 
-const BookingModal = ({ treatment, date }) => {
+const BookingModal = ({ treatment, date, setTreatment }) => {
   const { name, slots, _id } = treatment;
+
+  const handleBooking = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const phone = e.target.phone.value;
+    const slot = e.target.slot.value;
+    setTreatment(null);
+  };
+
   return (
     <div>
-      <input type="checkbox" id="booking-modal" class="modal-toggle" />
-      <div class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
-          <h3 class="font-bold text-3xl text-secondary">{name}</h3>
+      <input type="checkbox" id="booking-modal" className="modal-toggle" />
+      <div className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
+          <h3 className="font-bold text-3xl text-secondary">{name}</h3>
           <label
             for="booking-modal"
-            class="btn btn-sm btn-circle absolute right-2 top-5"
+            className="btn btn-sm btn-circle absolute right-2 top-5"
           >
             ✕
           </label>
-          <form className="grid justify-items-center gap-3 mt-2">
+          <form
+            onSubmit={handleBooking}
+            className="grid justify-items-center gap-3 mt-2"
+          >
             <input
               type="text"
+              readOnly
+              disabled
               value={format(date, "PP")}
-              class="input input-bordered w-full text-xl"
+              className="input input-bordered w-full"
             />
-            <input
-              type="text"
-              value={slots[0]}
-              placeholder="Type here"
-              class="input input-bordered w-full text-xl"
-            />
+            <select name="slot" className="select select-bordered w-full">
+              {slots?.map((slot) => (
+                <option value={slot}>{slot}</option>
+              ))}
+            </select>
             <input
               type="text"
               name="name"
               placeholder="Full Name"
-              class="input input-bordered w-full text-xl"
+              className="input input-bordered w-full"
             />
             <input
               type="email"
               name="email"
               placeholder="Email"
-              class="input input-bordered w-full text-xl"
+              className="input input-bordered w-full"
             />
             <input
               type="text"
-              name="Phone"
+              name="phone"
               placeholder="Phone"
-              class="input input-bordered w-full text-xl "
+              className="input input-bordered w-full "
             />
             <input
               className="btn btn-secondary d-block w-full text-xl text-white"
