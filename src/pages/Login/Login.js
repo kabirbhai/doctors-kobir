@@ -1,25 +1,31 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+// pages
+import Loading from "../shared/Loading";
 
 const Login = () => {
-  const [signInWithGoogle, GoogleUser, GoogleLoading, GoogleError] =
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
-  if (user) {
-    console.log(user);
+  let errorMassage;
+  if (user || googleUser) {
+    navigate(from, { replace: true });
   }
-  if (loading) {
-    return <p>loading</p>;
+  if (loading || googleLoading) {
+    return <Loading />;
   }
-  if (error) {
-    console.log(error.message);
+  if (error || googleError) {
+    errorMassage = error.message;
   }
 
   const handleLogin = (e) => {
@@ -37,22 +43,30 @@ const Login = () => {
               Login
             </h2>
             <form onSubmit={handleLogin} className="w-full">
+              <label class="label p-1">
+                <span class="label-text">Email</span>
+              </label>
               <input
                 type="email"
                 name="email"
                 placeholder="Email"
-                class="input input-bordered w-full my-2"
+                class="input input-bordered w-full mb-2"
               />
               <div class="form-control w-full">
+                <label class="label p-1 ">
+                  <span class="label-text">Password</span>
+                </label>
                 <input
                   name="password"
                   type="password"
                   placeholder="Password"
-                  class="input input-bordered w-full my-2"
+                  class="input input-bordered w-full mb-2"
                 />
+
                 <label class="label">
                   <span class="label-text-alt">Forgot password?</span>
                 </label>
+                <p className="text-red-600">{errorMassage}</p>
               </div>
               <input
                 className="btn btn-secondary w-full"

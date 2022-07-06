@@ -2,31 +2,37 @@ import React from "react";
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
+  useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
+import Loading from "../shared/Loading";
 
 const Signup = () => {
   const [signInWithGoogle, GoogleUser, GoogleLoading, GoogleError] =
     useSignInWithGoogle(auth);
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+  const [updateProfile] = useUpdateProfile(auth);
 
+  let errorMassage;
   if (user || GoogleUser) {
     console.log("user", user);
   }
   if (loading || GoogleLoading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
   if (error || GoogleError) {
-    console.log("signup", error.message);
+    errorMassage = error.message;
   }
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
+    const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    createUserWithEmailAndPassword(email, password);
+    await createUserWithEmailAndPassword(email, password);
+    await updateProfile({ displayName: name });
   };
   return (
     <section className="container mx-auto">
@@ -60,6 +66,7 @@ const Signup = () => {
                   <span class="label-text-alt">Forgot password?</span>
                 </label>
               </div>
+              <p className="text-center my-2"></p>
               <input
                 className="btn btn-secondary w-full"
                 type="submit"
