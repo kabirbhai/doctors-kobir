@@ -1,32 +1,13 @@
 import React from "react";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
-import {
-  useSignInWithEmailAndPassword,
-  useSignInWithGoogle,
-} from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 
-const Login = () => {
+const Signup = () => {
   const [signInWithGoogle, GoogleUser, GoogleLoading, GoogleError] =
     useSignInWithGoogle(auth);
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
-
-  if (user) {
-    console.log(user);
-  }
-  if (loading) {
-    return <p>loading</p>;
-  }
-  if (error) {
-    console.log(error.message);
-  }
-
-  const handleLogin = (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    signInWithEmailAndPassword(email, password);
   };
   return (
     <section className="container mx-auto">
@@ -34,9 +15,15 @@ const Login = () => {
         <div className="w-full lg:max-w-lg">
           <div className="bg-white p-10 flex flex-col w-full shadow-xl rounded-xl">
             <h2 className="text-3xl font-bold text-center  mb-5 uppercase">
-              Login
+              Signup
             </h2>
-            <form onSubmit={handleLogin} className="w-full">
+            <form onSubmit={handleSignup} className="w-full">
+              <input
+                type="text"
+                name="name"
+                placeholder="Full name"
+                class="input input-bordered w-full my-2"
+              />
               <input
                 type="email"
                 name="email"
@@ -57,12 +44,12 @@ const Login = () => {
               <input
                 className="btn btn-secondary w-full"
                 type="submit"
-                value="LOGIN"
+                value="SIGNUP"
               />
               <p className="text-center my-2">
-                Not have an account?{" "}
-                <Link className="text-secondary" to="/signup">
-                  Please signup
+                Already have an account?{" "}
+                <Link className="text-secondary" to="/login">
+                  Please Login
                 </Link>
               </p>
               <div class="divider">OR</div>
@@ -83,4 +70,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
