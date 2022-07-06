@@ -13,15 +13,15 @@ const ContactUsHome = () => {
           <input
             type="text"
             placeholder="Email address"
-            class="input input-bordered input-accent w-full mb-3"
+            className="input input-bordered input-accent w-full mb-3"
           />
           <input
             type="text"
             placeholder="Subject"
-            class="input input-bordered input-accent w-full mb-3 "
+            className="input input-bordered input-accent w-full mb-3 "
           />
           <textarea
-            class="textarea textarea-accent w-full mb-3"
+            className="textarea textarea-accent w-full mb-3"
             placeholder="Message"
           ></textarea>
           <input
