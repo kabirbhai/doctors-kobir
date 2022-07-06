@@ -25,7 +25,7 @@ const ContactUsHome = () => {
             placeholder="Message"
           ></textarea>
           <input
-            className="btn bg-gradient-to-r text-black hover:text-white from-primary to-secondary block w-1/2 mx-auto"
+            className="btn bg-gradient-to-r text-white text-xl from-primary to-secondary block w-1/2 mx-auto"
             type="button"
             value="Submit"
           />

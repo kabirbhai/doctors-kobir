@@ -10,6 +10,25 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
     const email = e.target.email.value;
     const phone = e.target.phone.value;
     const slot = e.target.slot.value;
+    const booking = {
+      patientId: _id,
+      name: name,
+      patient: email,
+      phone: phone,
+      slot: slot,
+    };
+
+    //  SEND DATA TO THE SERVER
+    const url = "http://localhost:5000/booking";
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(booking),
+    });
+
+    // for temporary close modal
     setTreatment(null);
   };
 
@@ -20,7 +39,7 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
         <div className="modal-box">
           <h3 className="font-bold text-3xl text-secondary">{name}</h3>
           <label
-            for="booking-modal"
+            htmlFor="booking-modal"
             className="btn btn-sm btn-circle absolute right-2 top-5"
           >
             ✕

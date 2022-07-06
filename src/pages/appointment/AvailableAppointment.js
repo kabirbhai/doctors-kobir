@@ -1,18 +1,12 @@
 import { format } from "date-fns";
 import React, { useEffect, useState } from "react";
+import useServices from "../../hooks/useServices";
 import BookingModal from "./BookingModal";
 import Service from "./Service";
 
 const AvailableAppointment = ({ date }) => {
-  const [services, setServices] = useState([]);
-  const [treatment, setTreatment] = useState("");
-
-  useEffect(() => {
-    fetch("Services.json")
-      .then((res) => res.json())
-      .then((data) => setServices(data));
-  }, []);
-
+  const [services] = useServices([]);
+  const [treatment, setTreatment] = useState(null);
   return (
     <section className="container mx-auto">
       <h1 className="text-secondary text-2xl text-center my-5 py-5">
