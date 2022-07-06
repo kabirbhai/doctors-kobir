@@ -62,7 +62,7 @@ const Login = () => {
               <p className="text-center my-2">
                 Not have an account?{" "}
                 <Link className="text-secondary" to="/signup">
-                  Please signup
+                  Create New Account
                 </Link>
               </p>
               <div class="divider">OR</div>

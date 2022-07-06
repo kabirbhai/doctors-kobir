@@ -1,7 +1,12 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
 
 const Navbar = () => {
+  const [user] = useAuthState(auth);
+
   const menuItems = (
     <>
       <li>
@@ -20,7 +25,10 @@ const Navbar = () => {
         <Link to="/home"> Contact us</Link>
       </li>
       <li>
-        <Link to="/login"> Login</Link>
+        <Link to="/login">
+          {" "}
+          {!user ? "Login" : <span onClick={() => signOut(auth)}>Logout</span>}
+        </Link>
       </li>
     </>
   );

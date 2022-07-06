@@ -1,13 +1,32 @@
 import React from "react";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
 
 const Signup = () => {
   const [signInWithGoogle, GoogleUser, GoogleLoading, GoogleError] =
     useSignInWithGoogle(auth);
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  if (user || GoogleUser) {
+    console.log("user", user);
+  }
+  if (loading || GoogleLoading) {
+    return <p>Loading...</p>;
+  }
+  if (error || GoogleError) {
+    console.log("signup", error.message);
+  }
+
   const handleSignup = (e) => {
     e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    createUserWithEmailAndPassword(email, password);
   };
   return (
     <section className="container mx-auto">
