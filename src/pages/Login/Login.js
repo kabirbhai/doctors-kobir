@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   useSignInWithEmailAndPassword,
@@ -17,10 +17,13 @@ const Login = () => {
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
+  useEffect(() => {
+    if (user || googleUser) {
+      navigate(from, { replace: true });
+    }
+  }, [navigate, user, googleUser, from]);
   let errorMassage;
-  if (user || googleUser) {
-    navigate(from, { replace: true });
-  }
+
   if (loading || googleLoading) {
     return <Loading />;
   }
@@ -43,28 +46,28 @@ const Login = () => {
               Login
             </h2>
             <form onSubmit={handleLogin} className="w-full">
-              <label class="label p-1">
-                <span class="label-text">Email</span>
+              <label className="label p-1">
+                <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
                 name="email"
                 placeholder="Email"
-                class="input input-bordered w-full mb-2"
+                className="input input-bordered w-full mb-2"
               />
-              <div class="form-control w-full">
-                <label class="label p-1 ">
-                  <span class="label-text">Password</span>
+              <div className="form-control w-full">
+                <label className="label p-1 ">
+                  <span className="label-text">Password</span>
                 </label>
                 <input
                   name="password"
                   type="password"
                   placeholder="Password"
-                  class="input input-bordered w-full mb-2"
+                  className="input input-bordered w-full mb-2"
                 />
 
-                <label class="label">
-                  <span class="label-text-alt">Forgot password?</span>
+                <label className="label">
+                  <span className="label-text-alt">Forgot password?</span>
                 </label>
                 <p className="text-red-600">{errorMassage}</p>
               </div>
@@ -79,7 +82,7 @@ const Login = () => {
                   Create New Account
                 </Link>
               </p>
-              <div class="divider">OR</div>
+              <div className="divider">OR</div>
               <button
                 onClick={() => signInWithGoogle()}
                 className="btn btn-primary w-full my-1"

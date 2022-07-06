@@ -4,7 +4,7 @@ import {
   useSignInWithGoogle,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "../shared/Loading";
 
@@ -14,10 +14,20 @@ const Signup = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile] = useUpdateProfile(auth);
+  const navigate = useNavigate();
 
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(name, email, password);
+    await createUserWithEmailAndPassword(email, password);
+    await updateProfile({ displayName: name });
+  };
   let errorMassage;
   if (user || GoogleUser) {
-    console.log("user", user);
+    navigate("/home");
   }
   if (loading || GoogleLoading) {
     return <Loading />;
@@ -25,15 +35,6 @@ const Signup = () => {
   if (error || GoogleError) {
     errorMassage = error.message;
   }
-
-  const handleSignup = async (e) => {
-    e.preventDefault();
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    await createUserWithEmailAndPassword(email, password);
-    await updateProfile({ displayName: name });
-  };
   return (
     <section className="container mx-auto">
       <div className="flex flex-col text-center md:text-left md:flex-row h-screen justify-evenly md:items-center">
@@ -46,27 +47,30 @@ const Signup = () => {
               <input
                 type="text"
                 name="name"
+                required
                 placeholder="Full name"
-                class="input input-bordered w-full my-2"
+                className="input input-bordered w-full my-2"
               />
               <input
                 type="email"
                 name="email"
+                required
                 placeholder="Email"
-                class="input input-bordered w-full my-2"
+                className="input input-bordered w-full my-2"
               />
-              <div class="form-control w-full">
+              <div className="form-control w-full">
                 <input
                   name="password"
                   type="password"
+                  required
                   placeholder="Password"
-                  class="input input-bordered w-full my-2"
+                  className="input input-bordered w-full my-2"
                 />
-                <label class="label">
-                  <span class="label-text-alt">Forgot password?</span>
+                <label className="label">
+                  <span className="label-text-alt">Forgot password?</span>
                 </label>
               </div>
-              <p className="text-center my-2"></p>
+              {errorMassage}
               <input
                 className="btn btn-secondary w-full"
                 type="submit"
@@ -78,7 +82,7 @@ const Signup = () => {
                   Please Login
                 </Link>
               </p>
-              <div class="divider">OR</div>
+              <div className="divider">OR</div>
               <button
                 onClick={() => signInWithGoogle()}
                 className="btn btn-primary w-full my-1"
