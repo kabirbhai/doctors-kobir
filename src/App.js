@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // pages
 import Home from "./pages/home/Home";
 import About from "./pages/about/About";
@@ -30,6 +31,17 @@ function App() {
         <Route path="/signup" element={<Signup />} />
       </Routes>
       <Footer />
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }

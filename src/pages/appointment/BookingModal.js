@@ -2,36 +2,45 @@ import React from "react";
 import { format } from "date-fns";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import { toast } from "react-toastify";
 
 const BookingModal = ({ treatment, date, setTreatment }) => {
   const { name, slots, _id } = treatment;
   const [user] = useAuthState(auth);
-
+  const formattedDate = format(date, "PP");
   const handleBooking = (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
-    const email = e.target.email.value;
     const phone = e.target.phone.value;
     const slot = e.target.slot.value;
     const booking = {
-      patientId: _id,
-      name: name,
-      patient: email,
+      treatmentId: _id,
+      date: formattedDate,
+      treatment: name,
+      patent: user.email,
+      patentName: user.displayName,
+      slot,
       phone: phone,
-      slot: slot,
     };
 
     //  SEND DATA TO THE SERVER
-    const url = "http://localhost:5000/booking";
-    fetch(url, {
+    fetch("http://localhost:5000/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify(booking),
-    });
-
-    // for temporary close modal
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success) {
+          toast.success(`Your appointment is booked`);
+        } else {
+          toast.error(
+            `Sorry😔! Your already have ${data?.booking?.treatment} appointment at ${data?.booking?.slot}`
+          );
+        }
+      });
     setTreatment(null);
   };
 

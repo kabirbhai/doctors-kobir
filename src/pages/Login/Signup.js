@@ -37,7 +37,7 @@ const Signup = () => {
   }
   return (
     <section className="container mx-auto">
-      <div className="flex flex-col text-center md:text-left md:flex-row h-screen justify-evenly md:items-center">
+      <div className="flex flex-col text-center md:text-left md:flex-row py-20 justify-evenly md:items-center">
         <div className="w-full lg:max-w-lg">
           <div className="bg-white p-10 flex flex-col w-full shadow-xl rounded-xl">
             <h2 className="text-3xl font-bold text-center  mb-5 uppercase">

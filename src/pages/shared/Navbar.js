@@ -33,29 +33,16 @@ const Navbar = () => {
     </>
   );
   return (
-    <header>
+    <header className="relative">
       <nav className="navbar justify-around sticky top-0 shadow-md">
         <div className="navbar-start">
           <div className="dropdown">
-            <label tabIndex="0" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
+            <label tabIndex="0" className="btn bg-black  btn-ghost lg:hidden">
+              X
             </label>
             <ul
               tabIndex="0"
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 -z-20 shadow  rounded-box w-52"
             >
               {menuItems}
             </ul>
@@ -64,8 +51,8 @@ const Navbar = () => {
             KabirBhai
           </Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal p-0">{menuItems}</ul>
+        <div className="text-left hidden lg:flex">
+          <ul className="menu menu-horizontal text-lef p-0">{menuItems}</ul>
         </div>
       </nav>
     </header>
