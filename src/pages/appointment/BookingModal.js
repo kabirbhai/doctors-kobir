@@ -23,7 +23,7 @@ const BookingModal = ({ treatment, date, setTreatment, refetch }) => {
     };
 
     //  SEND DATA TO THE SERVER
-    fetch("http://localhost:5000/booking", {
+    fetch("https://nameless-tundra-09432.herokuapp.com/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",

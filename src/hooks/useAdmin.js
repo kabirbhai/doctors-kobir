@@ -6,7 +6,7 @@ const useAdmin = (user) => {
 
   useEffect(() => {
     const email = user?.email;
-    const url = `http://localhost:5000/admin/${email}`;
+    const url = `https://nameless-tundra-09432.herokuapp.com/admin/${email}`;
     fetch(url, {
       method: "GET",
       headers: {
