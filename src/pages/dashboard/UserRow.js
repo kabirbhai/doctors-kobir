@@ -31,19 +31,19 @@ const UserRow = ({ user, refetch }) => {
     <tr>
       <th>
         <label>
-          <input type="checkbox" class="checkbox" />
+          <input type="checkbox" className="checkbox" />
         </label>
       </th>
       <td>
-        <div class="flex items-center space-x-3">
-          <div class="avatar">
-            <div class="mask mask-squircle w-12 h-12">
+        <div className="flex items-center space-x-3">
+          <div className="avatar">
+            <div className="mask mask-squircle w-12 h-12">
               <img src={img} alt="Avatar Tailwind CSS Component" />
             </div>
           </div>
           <div>
-            <div class="font-bold">Kabir</div>
-            <div class="text-sm opacity-50">Brazil</div>
+            <div className="font-bold">Kabir</div>
+            <div className="text-sm opacity-50">Brazil</div>
           </div>
         </div>
       </td>
@@ -54,12 +54,12 @@ const UserRow = ({ user, refetch }) => {
           {role !== "admin" && (
             <button
               onClick={makeAdmin}
-              class="btn btn-primary text-gray-600 text-[14px]  btn-xs"
+              className="btn btn-outline btn-primary text-gray-600 text-[14px]  btn-xs"
             >
               Make Admin
             </button>
           )}
-          <button class="btn btn-primary text-gray-600 text-[14px]  btn-xs">
+          <button className="btn btn-primary text-gray-600 text-[14px]  btn-xs">
             Remove user
           </button>
         </div>

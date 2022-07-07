@@ -10,7 +10,7 @@ import Footer from "./pages/shared/Footer";
 import Appointment from "./pages/appointment/Appointment";
 import Signup from "./pages/login/Signup";
 import RequireAuth from "./pages/login/RequireAuth";
-import Dashboard from "./pages/dashboard/dashboard";
+import Dashboard from "./pages/dashboard/Dashboard";
 import MyAppointment from "./pages/dashboard/MyAppointment";
 import MyReview from "./pages/dashboard/MyReview";
 import MyHistory from "./pages/dashboard/MyHistory";

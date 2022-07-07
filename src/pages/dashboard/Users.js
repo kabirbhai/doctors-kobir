@@ -24,13 +24,13 @@ const Users = () => {
     <section className="text-center">
       <h1>All user {users.length} </h1>
 
-      <div class="overflow-x-auto w-full">
-        <table class="table w-full">
+      <div className="overflow-x-auto w-full">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>
                 <label>
-                  <input type="checkbox" class="checkbox" />
+                  <input type="checkbox" className="checkbox" />
                 </label>
               </th>
               <th>Image</th>

@@ -23,7 +23,7 @@ const Login = () => {
     if (token) {
       navigate(from, { replace: true });
     }
-  }, [navigate, token, from]);
+  }, [token, navigate, from]);
 
   let errorMassage;
   if (loading || googleLoading) {
