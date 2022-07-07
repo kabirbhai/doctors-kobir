@@ -1,11 +1,11 @@
 import React from "react";
 
-const About = () => {
+const Contact = () => {
   return (
     <section className="container mx-auto h-screen">
-      <h1>About</h1>
+      <h1>Contact us</h1>
     </section>
   );
 };
 
-export default About;
+export default Contact;

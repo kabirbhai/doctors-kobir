@@ -24,10 +24,10 @@ const Navbar = () => {
         <Link to="/appointment"> Appointment</Link>
       </li>
       <li>
-        <Link to="/home"> Reviews</Link>
+        <Link to="/review"> Reviews</Link>
       </li>
       <li>
-        <Link to="/home"> Contact us</Link>
+        <Link to="/contact"> Contact us</Link>
       </li>
       {user && (
         <li>

@@ -1,7 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// pages
+
+// pages and components
 import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import Navbar from "./pages/shared/Navbar";
@@ -11,6 +12,8 @@ import Appointment from "./pages/appointment/Appointment";
 import Signup from "./pages/login/Signup";
 import RequireAuth from "./pages/login/RequireAuth";
 import Dashboard from "./pages/dashboard/Dashboard";
+import Review from "./pages/review/Review";
+import Contact from "./pages/contact/Contact";
 import MyAppointment from "./pages/dashboard/MyAppointment";
 import MyReview from "./pages/dashboard/MyReview";
 import MyHistory from "./pages/dashboard/MyHistory";
@@ -25,6 +28,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/review" element={<Review />} />
+        <Route path="/contact" element={<Contact />} />
         <Route
           path="/appointment"
           element={
