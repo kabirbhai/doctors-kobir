@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
@@ -6,14 +6,18 @@ import {
 } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import useToken from "../../hooks/useToken";
 import Loading from "../shared/Loading";
 
 const Signup = () => {
+  // SOCIAL LOGIN
   const [signInWithGoogle, GoogleUser, GoogleLoading, GoogleError] =
     useSignInWithGoogle(auth);
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile] = useUpdateProfile(auth);
+  // CUSTOM HOOKS
+  const [token] = useToken(user || GoogleUser);
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
@@ -21,14 +25,15 @@ const Signup = () => {
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(name, email, password);
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName: name });
   };
   let errorMassage;
-  if (user || GoogleUser) {
-    navigate("/home");
-  }
+  useEffect(() => {
+    if (token) {
+      navigate("/home");
+    }
+  }, [navigate, token]);
   if (loading || GoogleLoading) {
     return <Loading />;
   }
