@@ -24,6 +24,11 @@ const Navbar = () => {
       <li>
         <Link to="/home"> Contact us</Link>
       </li>
+      {user && (
+        <li>
+          <Link to="/dashboard">Dashboard</Link>{" "}
+        </li>
+      )}
       <li>
         <Link to="/login">
           {" "}
@@ -37,7 +42,7 @@ const Navbar = () => {
       <nav className="navbar justify-around sticky top-0 shadow-md">
         <div className="navbar-start">
           <div className="dropdown">
-            <label tabIndex="0" className="btn bg-black  btn-ghost lg:hidden">
+            <label tabIndex="0" className="btn   btn-ghost lg:hidden">
               X
             </label>
             <ul
@@ -51,7 +56,7 @@ const Navbar = () => {
             KabirBhai
           </Link>
         </div>
-        <div className="text-left hidden lg:flex">
+        <div className="text-left navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal text-lef p-0">{menuItems}</ul>
         </div>
       </nav>

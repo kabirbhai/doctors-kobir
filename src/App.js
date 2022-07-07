@@ -10,6 +10,9 @@ import Footer from "./pages/shared/Footer";
 import Appointment from "./pages/appointment/Appointment";
 import Signup from "./pages/login/Signup";
 import RequireAuth from "./pages/login/RequireAuth";
+import Dashboard from "./pages/dashboard/dashboard";
+import MyAppointment from "./pages/dashboard/MyAppointment";
+import MyReview from "./pages/dashboard/MyReview";
 
 function App() {
   return (
@@ -27,6 +30,17 @@ function App() {
             </RequireAuth>
           }
         />
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
+          }
+        >
+          <Route index element={<MyAppointment />} />
+          <Route path="myReview" element={<MyReview />} />
+        </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>

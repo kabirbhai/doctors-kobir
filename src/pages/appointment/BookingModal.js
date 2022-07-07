@@ -16,8 +16,8 @@ const BookingModal = ({ treatment, date, setTreatment, refetch }) => {
       treatmentId: _id,
       date: formattedDate,
       treatment: name,
-      patent: user.email,
-      patentName: user.displayName,
+      patient: user.email,
+      patientName: user.displayName,
       slot,
       phone: phone,
     };
@@ -94,6 +94,7 @@ const BookingModal = ({ treatment, date, setTreatment, refetch }) => {
             <input
               type="text"
               name="phone"
+              required
               placeholder="Phone"
               className="input input-bordered w-full "
             />
