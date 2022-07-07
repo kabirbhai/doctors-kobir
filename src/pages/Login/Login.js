@@ -7,23 +7,25 @@ import {
 import auth from "../../firebase.init";
 // pages
 import Loading from "../shared/Loading";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [token] = useToken(user || googleUser);
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
-    if (user || googleUser) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [navigate, user, googleUser, from]);
-  let errorMassage;
+  }, [navigate, token, from]);
 
+  let errorMassage;
   if (loading || googleLoading) {
     return <Loading />;
   }
