@@ -1,11 +1,20 @@
 import React from "react";
 import { useQuery } from "react-query";
 import Loading from "../shared/Loading";
-import img from "../../assets/img.jpg";
+import UserRow from "./UserRow";
 
 const Users = () => {
-  const { data: users, isLoading } = useQuery("users", () =>
-    fetch("http://localhost:5000/user").then((res) => res.json())
+  const {
+    data: users,
+    isLoading,
+    refetch,
+  } = useQuery("users", () =>
+    fetch("http://localhost:5000/user", {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
   );
 
   if (isLoading) {
@@ -32,31 +41,7 @@ const Users = () => {
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr>
-                <th>
-                  <label>
-                    <input type="checkbox" class="checkbox" />
-                  </label>
-                </th>
-                <td>
-                  <div class="flex items-center space-x-3">
-                    <div class="avatar">
-                      <div class="mask mask-squircle w-12 h-12">
-                        <img src={img} alt="Avatar Tailwind CSS Component" />
-                      </div>
-                    </div>
-                    <div>
-                      <div class="font-bold">Kabir</div>
-                      <div class="text-sm opacity-50">Brazil</div>
-                    </div>
-                  </div>
-                </td>
-                <td>{user.email}</td>
-                <td>{user._id}</td>
-                <th>
-                  <button class="btn btn-primary  btn-xs">UPDATE</button>
-                </th>
-              </tr>
+              <UserRow refetch={refetch} key={user._id} user={user} />
             ))}
           </tbody>
         </table>
