@@ -17,7 +17,7 @@ const dashboard = () => {
           <Outlet />
         </div>
         <div className="drawer-side">
-          <label for="dashboard-drawer" className="drawer-overlay"></label>
+          <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
           <ul className="menu p-2 overflow-y-auto w-60 bg-gray-200  text-base-content">
             <li>
               <Link
@@ -41,6 +41,14 @@ const dashboard = () => {
                 to="/dashboard/myHistory"
               >
                 MY HISTORY
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="border border-cyan-900 my-1 text-black"
+                to="/dashboard/allUser"
+              >
+                ALL USER
               </Link>
             </li>
           </ul>
