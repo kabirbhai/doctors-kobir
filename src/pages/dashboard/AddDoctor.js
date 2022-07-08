@@ -8,7 +8,7 @@ const AddDoctor = () => {
   const [email, setEmail] = useState("");
   const [location, setLocation] = useState("");
   const { data: services, isLoading } = useQuery("service", () =>
-    fetch("http://localhost:5000/service", {
+    fetch("https://nameless-tundra-09432.herokuapp.com/service", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -45,7 +45,7 @@ const AddDoctor = () => {
             email: email,
           };
           //send data to your own database
-          const url = `http://localhost:5000/doctor`;
+          const url = `https://nameless-tundra-09432.herokuapp.com/doctor`;
           fetch(url, {
             method: "POST",
             headers: {
