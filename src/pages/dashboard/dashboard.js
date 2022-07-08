@@ -49,14 +49,32 @@ const Dashboard = () => {
               </Link>
             </li>
             {admin && (
-              <li>
-                <Link
-                  className="border border-cyan-900 my-1 text-black"
-                  to="/dashboard/allUser"
-                >
-                  ALL USER
-                </Link>
-              </li>
+              <>
+                <li>
+                  <Link
+                    className="border border-cyan-900 my-1 text-black"
+                    to="/dashboard/allUser"
+                  >
+                    ALL USER
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="border border-cyan-900 my-1 text-black"
+                    to="/dashboard/addDoctor"
+                  >
+                    ADD DOCTOR
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="border border-cyan-900 my-1 text-black"
+                    to="/dashboard/manageDoctor"
+                  >
+                    MANAGE DOCTORS
+                  </Link>
+                </li>
+              </>
             )}
           </ul>
         </div>

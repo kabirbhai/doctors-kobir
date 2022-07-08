@@ -28,20 +28,20 @@ const Users = () => {
         <table className="table w-full">
           <thead>
             <tr>
-              <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
-              </th>
-              <th>Image</th>
-              <th>Name</th>
+              <th>No</th>
               <th>Email</th>
+              <th>Id</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
-              <UserRow refetch={refetch} key={user._id} user={user} />
+            {users.map((user, index) => (
+              <UserRow
+                refetch={refetch}
+                key={user._id}
+                index={index}
+                user={user}
+              />
             ))}
           </tbody>
         </table>

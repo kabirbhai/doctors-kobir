@@ -2,7 +2,7 @@ import React from "react";
 import img from "../../assets/img.jpg";
 import { toast } from "react-toastify";
 
-const UserRow = ({ user, refetch }) => {
+const UserRow = ({ user, index, refetch }) => {
   const { email, _id, role } = user;
 
   const makeAdmin = () => {
@@ -29,26 +29,11 @@ const UserRow = ({ user, refetch }) => {
 
   return (
     <tr>
-      <th>
-        <label>
-          <input type="checkbox" className="checkbox" />
-        </label>
-      </th>
       <td>
-        <div className="flex items-center space-x-3">
-          <div className="avatar">
-            <div className="mask mask-squircle w-12 h-12">
-              <img src={img} alt="Avatar Tailwind CSS Component" />
-            </div>
-          </div>
-          <div>
-            <div className="font-bold">Kabir</div>
-            <div className="text-sm opacity-50">Brazil</div>
-          </div>
-        </div>
+        <h1>{index + 1}</h1>
       </td>
-      <td>{_id}</td>
       <td>{email}</td>
+      <td>{_id}</td>
       <th>
         <div className="flex flex-col space-y-2">
           {role !== "admin" && (

@@ -30,7 +30,7 @@ const MyAppointment = () => {
         })
         .then((data) => setAppointments(data));
     }
-  }, [user]);
+  }, [user, navigate]);
 
   return (
     <section>
@@ -47,7 +47,7 @@ const MyAppointment = () => {
           </thead>
           <tbody>
             {appointments.map((a, i) => (
-              <tr>
+              <tr key={i}>
                 <th>{i + 1}</th>
                 <td>{a.patientName}</td>
                 <td>{a.date}</td>
