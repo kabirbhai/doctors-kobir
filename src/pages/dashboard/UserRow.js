@@ -1,10 +1,8 @@
 import React from "react";
-import img from "../../assets/img.jpg";
 import { toast } from "react-toastify";
 
 const UserRow = ({ user, index, refetch }) => {
   const { email, _id, role } = user;
-
   const makeAdmin = () => {
     const url = `https://nameless-tundra-09432.herokuapp.com/user/admin/${email}`;
     fetch(url, {

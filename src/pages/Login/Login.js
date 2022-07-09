@@ -87,7 +87,7 @@ const Login = () => {
               <div className="divider">OR</div>
               <button
                 onClick={() => signInWithGoogle()}
-                className="btn btn-primary w-full my-1"
+                className="btn w-full my-1"
               >
                 Continue with Google
               </button>
